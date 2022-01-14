@@ -1,8 +1,8 @@
-name: daily
+name: weekly
 on:
   push:
   schedule:
-  - cron: '6 0 * * *'  # M H d m w (daily at 00:06)
+  - cron: '6 0 * * 1'  # On monday (https://crontab.guru)
 jobs:
   ghstat:
     if: github.event_name != 'pull_request' || github.repository_owner != 'casperdcl'
@@ -16,9 +16,9 @@ jobs:
         gist-id: ${{ secrets.GIST_ID }}
         # author: Casper da Costa-Luis
         # user: casperdcl
-        repos-incl: ${{ secrets.REPOS_INCL }}
-        repos-skip: ${{ secrets.REPOS_SKIP }}
-        lang-names: ${{ secrets.LANG_NAMES }}
+        # repos-incl: ${{ secrets.REPOS_INCL }}
+        # repos-skip: ${{ secrets.REPOS_SKIP }}
+        # lang-names: ${{ secrets.LANG_NAMES }}
   check:
     if: github.event_name != 'pull_request' || github.repository_owner != 'casperdcl'
     runs-on: ubuntu-latest
